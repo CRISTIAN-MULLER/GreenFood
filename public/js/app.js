@@ -1973,10 +1973,20 @@ function decreaseItemCartQty(product) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().put('/decrease-cart-item', product).then(function (res) {
     var productQty = document.getElementById('productQty' + res.data.itemId);
     var cartItemTotal = document.getElementById('cartItemTotal' + res.data.itemId);
-    cartItemTotal.innerText = 'R$ ' + res.data.itemTotalPrice;
+    cartItemTotal.innerText = res.data.itemTotalPrice.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
     productQty.innerText = res.data.itemTotalQty + ' UN';
     cartCounter.innerText = res.data.totalQty;
-    cartAmount.innerText = 'R$ ' + res.data.cartTotalPrice;
+    cartAmount.innerText = res.data.cartTotalPrice.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
   })["catch"](function (err) {
     console.log(err);
   });
@@ -1986,10 +1996,20 @@ function increaseItemCartQty(product) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().put('/increase-cart-item', product).then(function (res) {
     var productQty = document.getElementById('productQty' + res.data.itemId);
     var cartItemTotal = document.getElementById('carItemTotal' + res.data.itemId);
-    cartItemTotal.innerText = 'R$ ' + res.data.itemTotalPrice;
+    cartItemTotal.innerText = res.data.itemTotalPrice.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
     productQty.innerText = res.data.itemTotalQty + ' UN';
     cartCounter.innerText = res.data.totalQty;
-    cartAmount.innerText = 'R$ ' + res.data.cartTotalPrice;
+    cartAmount.innerText = res.data.cartTotalPrice.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
   })["catch"](function (err) {
     console.log(err);
   });
@@ -2000,7 +2020,12 @@ function removeItemFromCart(product) {
     var productData = document.getElementById('productData' + res.data.itemId);
     productData.remove();
     cartCounter.innerText = res.data.totalQty;
-    cartAmount.innerText = 'R$ ' + res.data.cartTotalPrice;
+    cartAmount.innerText = res.data.cartTotalPrice.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
   })["catch"](function (err) {
     console.log(err);
   });
@@ -2192,6 +2217,12 @@ cartItemQuantity.forEach(function (input) {
 
     updateCart(cart);
   });
+});
+$('#orderNow').on('click', function (event) {
+  event.preventDefault();
+  $('html,body').animate({
+    scrollTop: $('#container').offset().top
+  }, 'slow');
 });
 
 /***/ }),

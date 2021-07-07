@@ -46,7 +46,10 @@
           id="cartItemTotal<%= product.item._id %>"
           class="font-bold text-lg"
           ><%= (product.item.saleUnit.price * product.itemTotalQty).toLocaleString('pt-BR', { style: 'currency',
-          currency: 'BRL' }) %></span
+          currency: 'BRL',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+           }) %></span
         >
       </div>
       <% } %>

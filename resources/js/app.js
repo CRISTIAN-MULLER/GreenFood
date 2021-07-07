@@ -62,10 +62,23 @@ function decreaseItemCartQty(product) {
         'cartItemTotal' + res.data.itemId
       );
 
-      cartItemTotal.innerText = 'R$ ' + res.data.itemTotalPrice;
+      cartItemTotal.innerText = res.data.itemTotalPrice.toLocaleString(
+        'pt-BR',
+        {
+          style: 'currency',
+          currency: 'BRL',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }
+      );
       productQty.innerText = res.data.itemTotalQty + ' UN';
       cartCounter.innerText = res.data.totalQty;
-      cartAmount.innerText = 'R$ ' + res.data.cartTotalPrice;
+      cartAmount.innerText = res.data.cartTotalPrice.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -79,10 +92,23 @@ function increaseItemCartQty(product) {
       let cartItemTotal = document.getElementById(
         'carItemTotal' + res.data.itemId
       );
-      cartItemTotal.innerText = 'R$ ' + res.data.itemTotalPrice;
+      cartItemTotal.innerText = res.data.itemTotalPrice.toLocaleString(
+        'pt-BR',
+        {
+          style: 'currency',
+          currency: 'BRL',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }
+      );
       productQty.innerText = res.data.itemTotalQty + ' UN';
       cartCounter.innerText = res.data.totalQty;
-      cartAmount.innerText = 'R$ ' + res.data.cartTotalPrice;
+      cartAmount.innerText = res.data.cartTotalPrice.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -98,8 +124,12 @@ function removeItemFromCart(product) {
       productData.remove();
 
       cartCounter.innerText = res.data.totalQty;
-
-      cartAmount.innerText = 'R$ ' + res.data.cartTotalPrice;
+      cartAmount.innerText = res.data.cartTotalPrice.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -304,4 +334,14 @@ cartItemQuantity.forEach((input) => {
     //cart.dataset.item = JSON.stringify(product);
     updateCart(cart);
   });
+});
+
+$('#orderNow').on('click', function (event) {
+  event.preventDefault();
+  $('html,body').animate(
+    {
+      scrollTop: $('#container').offset().top,
+    },
+    'slow'
+  );
 });

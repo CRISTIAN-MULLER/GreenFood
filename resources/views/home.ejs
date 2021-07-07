@@ -4,6 +4,7 @@
       <h6 class="text-lg"><em>Sua Feira sem sair de casa.</em></h6>
       <h1 class="text-6xl font-bold">Tá esperando o quê?</h1>
       <button
+        id="orderNow"
         class="px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary"
       >
         Peça Agora
@@ -14,7 +15,8 @@
 </section>
 <section id="container" class="menu container mx-auto py-8">
   <h1 class="text-xl font-bold mb-8">
-    Todos os Itens <% categories.forEach(function (category){%>
+    Todos os Itens
+    <!-- Todos os Itens <% categories.forEach(function (category){%>
     <button
       id="<%= category %>"
       type="button"
@@ -22,7 +24,7 @@
     >
       <%= category %>
     </button>
-    <% })%>
+    <% })%> -->
   </h1>
   <div
     class="
