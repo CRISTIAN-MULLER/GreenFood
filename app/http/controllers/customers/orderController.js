@@ -2,6 +2,7 @@ const Order = require('../../../models/order')
 const User = require('../../../models/user')
 const moment = require('moment')
 const { GraphQLClient, gql } = require('graphql-request')
+const API_URL = process.env.API_URL
 
 function orderController(e) {
 	return {
@@ -56,10 +57,8 @@ function orderController(e) {
 					}
 				}
 			`
-			const endpoint = 'http://192.168.100.3:4000/graphql'
-			//const endpoint = 'https://green-foodie-api.herokuapp.com/graphql'
 
-			const graphQLClient = new GraphQLClient(endpoint)
+			const graphQLClient = new GraphQLClient(API_URL)
 
 			const data = await graphQLClient.request(mutation, variables)
 

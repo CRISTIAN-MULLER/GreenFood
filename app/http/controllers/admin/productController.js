@@ -1,8 +1,9 @@
+require('dotenv').config()
 const { default: slugify } = require('slugify')
 const Product = require('../../../models/product')
 const { GraphQLClient, gql } = require('graphql-request')
 const path = require('path')
-
+const API_URL = process.env.API_URL
 var cloudinary = require('cloudinary').v2
 
 function productController() {
@@ -40,9 +41,7 @@ function productController() {
 				}
 			`
 
-			const endpoint = 'http://192.168.100.3:4000/graphql'
-
-			const graphQLClient = new GraphQLClient(endpoint)
+			const graphQLClient = new GraphQLClient(API_URL)
 
 			const data = await graphQLClient.request(query, variables)
 
@@ -165,9 +164,7 @@ function productController() {
 				}
 			`
 
-			const endpoint = 'http://192.168.100.3:4000/graphql'
-
-			const graphQLClient = new GraphQLClient(endpoint)
+			const graphQLClient = new GraphQLClient(API_URL)
 
 			const data = await graphQLClient.request(query, variables)
 

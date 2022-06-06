@@ -1,5 +1,7 @@
+require('dotenv').config()
 const User = require('../../models/user')
 const { GraphQLClient, gql } = require('graphql-request')
+const API_URL = process.env.API_URL
 
 function usersController() {
 	return {
@@ -36,9 +38,7 @@ function usersController() {
 				}
 			`
 
-			const endpoint = 'http://192.168.100.3:4000/graphql'
-
-			const graphQLClient = new GraphQLClient(endpoint)
+			const graphQLClient = new GraphQLClient(API_URL)
 
 			const data = await graphQLClient.request(query, variables)
 
